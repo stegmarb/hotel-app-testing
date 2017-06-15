@@ -35,7 +35,7 @@ public class Send {
 
     channel.exchangeDeclare("log", "fanout");
 
-    channel.queueDeclare(QUEUE_NAME, true, false, false, null);
+    channel.queueDeclare(QUEUE_NAME, false, false, false, null);
     String message = "Hello World!";
     channel.basicPublish("log", QUEUE_NAME, null, message.getBytes("UTF-8"));
     System.out.println(" [x] Sent '" + message + "'");
@@ -62,7 +62,7 @@ public class Send {
     channel.exchangeDeclare("log", BuiltinExchangeType.FANOUT, true);
     channel.queueBind(QUEUE_NAME, "log", "kryptonite");
 
-    channel.queueDeclare(QUEUE_NAME, true, false, false, null);
+    channel.queueDeclare(QUEUE_NAME, false, false, false, null);
     System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
 
     Consumer consumer = new DefaultConsumer(channel) {
