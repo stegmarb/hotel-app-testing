@@ -29,6 +29,7 @@ dependencies {
 	runtime('org.springframework.boot:spring-boot-devtools')
 //	runtime('com.h2database:h2')
 //	runtime('mysql:mysql-connector-java')
+	compile group: 'com.rabbitmq', name: 'amqp-client', version: '4.1.0'
 	runtime('org.postgresql:postgresql')
 	compileOnly('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
