@@ -33,9 +33,9 @@ public class Send {
     factory.setVirtualHost(rabbitMqUrl.getPath().substring(1));
     Connection connection = factory.newConnection();
     Channel channel = connection.createChannel();
-
-//    channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.FANOUT);
-
+    System.out.println(1111111111);
+    channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.FANOUT);
+    System.out.println(222222222);
 //    channel.queueDeclare(QUEUE_NAME, true, false, false, null);
     String message = "Hello World!";
     channel.basicPublish(EXCHANGE_NAME, "", null, message.getBytes("UTF-8"));
@@ -59,14 +59,14 @@ public class Send {
     factory.setVirtualHost(rabbitMqUrl.getPath().substring(1));
     Connection connection = factory.newConnection();
     Channel channel = connection.createChannel();
-
-    channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.FANOUT);
+    System.out.println(333333333);
+//    channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.FANOUT);
     String queueName = channel.queueDeclare().getQueue();
     channel.queueBind(QUEUE_NAME, EXCHANGE_NAME, "");
-
+    System.out.println(444444444);
 //    channel.queueDeclare(QUEUE_NAME, true, false, false, null);
     System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
-
+    System.out.println(666666666);
     Consumer consumer = new DefaultConsumer(channel) {
       @Override
       public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body)
@@ -76,5 +76,6 @@ public class Send {
       }
     };
     channel.basicConsume(QUEUE_NAME, true, consumer);
+    System.out.println(555555555);
   }
 }

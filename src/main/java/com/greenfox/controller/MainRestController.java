@@ -11,8 +11,11 @@ public class MainRestController {
 
   @RequestMapping("/")
   public Test test() throws Exception {
+    System.out.println(77777777);
     send.send();
+    System.out.println(88888888);
     send.consume();
+    System.out.println(99999999);
     return new Test("that shit!");
   }
 }
